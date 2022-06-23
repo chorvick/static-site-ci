@@ -21,5 +21,5 @@ else
 fi
 
 # Use the AWS command to upload the build to S3
-aws s3 ls
+aws configure --access-key-id $AWS_ACCESS_KEY_ID --secret-access-key $AWS_SECRET_KEY --region us-east-1 --output json
 
