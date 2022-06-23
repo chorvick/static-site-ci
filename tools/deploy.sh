@@ -8,3 +8,4 @@
 
 # Use the AWS command to upload the build to S3
 
+echo "Hello world"
