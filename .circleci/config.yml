@@ -19,4 +19,5 @@ workflows:
   # push workflow will be triggered when a new pull request is created
   build_and_test_branch:
     jobs:
-      - build
+      - build:
+          context: cloud-hippie-global
