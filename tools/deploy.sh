@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#! /bin/bash
 
 # Add a step that checks for a build folder and tell the user.
 
