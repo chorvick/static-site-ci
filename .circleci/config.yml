@@ -1,0 +1,28 @@
+version: 2.1
+orbs:
+  react: thefrontside/react@0.1.0
+
+jobs:
+  - deploy:
+      docker: # executor type
+        - image: cimg/node:14 # primary container will run the latest, production-ready base image
+      steps:
+        - checkout
+        - run:
+            name: Deploy to production site
+            run: |
+             ./tools/deploy.sh
+
+workflows:
+  # push workflow will be triggered when a new pull request is created
+  build_and_test_branch:
+    jobs:
+      - react/install
+      - react/test
+          requires:
+            - react/install
+  build_and_test_prod:
+      - react/install
+      - react/test
+          requires:
+            - react/install
