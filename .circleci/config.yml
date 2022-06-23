@@ -18,10 +18,11 @@ workflows:
   build_and_test_branch:
     jobs:
       - react/install
-      - react/test
+      - react/test:
           requires:
-            - react/install
+              - react/install
   build_and_test_prod:
+    jobs:
       - react/install
       - react/test
           requires:
