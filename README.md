@@ -24,6 +24,40 @@ React makes it easier for develoeprs to build web applications by allowing them 
 We are going to take this React app and deploy it to a static website
 
 
+# Auth to AWS 
+
+To authenticate and connect Circle CI, you need to create ACCESS_KEY_ID and SECRET_ACCESS_KEY in your Circle CI project settings.
+
+For more instructions, please see the [Circle CI documentation for Env Vars](https://circleci.com/docs/2.0/ecs-ecr#configure-circleci-environment-variables).
+
+It is recommended that you set these environment variables at the organizational settings level.
+
+It is located on the left hand side of the Circle CI page.
+
+Within the organization context, create a context. This is a "group" you can use to group your projects.
+
+The name of this context should be something you can add to each circle-ci file.
+
+This will allow Circle CI to add this set of environment variabls or `context` to each of the projects.
+
+Once you add those environment variables, you can use the `context` command to switch to that context.
+
+Within the circle-ci file, in each job within the workflow that requires this context, add the `context` command.
+
+The below example allows the `build` job to use the `cloud-hippie-global` context.
+
+
+```yml
+workflows:
+  # push workflow will be triggered when a new pull request is created
+  build_and_test_branch:
+    jobs:
+      - build:
+          context: cloud-hippie-global
+```
+
+
+
 # Deploying to a Static Website
 
 Fork this repo and look at `tools/deploy.sh`.
